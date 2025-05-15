@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Cypress screenshots and videos (možeš ih ignorirati ako ne želiš u repozitorij)
+cypress/screenshots/
+cypress/videos/
+
+# Environment variables or config files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output folders
+dist/
+build/
+out/
