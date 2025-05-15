@@ -8,7 +8,7 @@ describe('User Delete', () => {
     cy.get('input[name="password"]').type('divancic');
     cy.get('button[type="submit"]').click();
     cy.url().should('include', '/profile');
-    cy.get('.thumbnail__img').click();
+    cy.get('[data-index="0"] > .thumbnail > .thumbnail__img').click();
     cy.contains('button', 'Delete').click();
     cy.get('.btn--warning').click();
   });

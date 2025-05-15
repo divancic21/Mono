@@ -1,5 +1,5 @@
-describe('User Logout', () => {
-  it('logs out after successful login', () => {
+describe('User False Search', () => {
+  it('returns no results when searching for non-existing image', () => {
     cy.visit('http://demo.baasic.com/angular/starterkit-photo-gallery/main');
     cy.get('svg').first().trigger('mouseover');
     cy.contains('a.menu__title', 'Menu').click({ force: true });
@@ -10,7 +10,11 @@ describe('User Logout', () => {
     cy.url().should('include', '/profile');
     cy.get('svg').first().trigger('mouseover');
     cy.contains('a.menu__title', 'Menu').click({ force: true });
-    cy.get('baasic-logout > .nav__item > .nav__link').click({ force: true });
-    cy.url().should('include', '/login');
+    cy.get('form.ng-pristine > .ng-pristine').click();
+    cy.get('input[formcontrolname="search"]', { timeout: 10000 })
+      .should('be.visible')
+      .clear()
+      .type('rendomslika{enter}');
+    cy.get('.thumbnail__img').should('have.length', 0); 
   });
 });
