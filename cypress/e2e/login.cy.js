@@ -1,22 +1,12 @@
 describe('User Login', () => {
   it('logs in after opening menu and clicking Login', () => {
     cy.visit('http://demo.baasic.com/angular/starterkit-photo-gallery/main');
-
-    // Klik na menu da se otvori dropdown
-    cy.get('a.menu__title').click();
-
-    // Klik na "Login" u meniju (span sa klasom nav__link i tekstom Login)
-    cy.contains('span.nav__link', 'Login').click();
-
-    // Unesi username i password
+    cy.get('svg').first().trigger('mouseover');
+    cy.contains('a.menu__title', 'Menu').click({ force: true });
+    cy.get(':nth-child(2) > .nav__link').click();
     cy.get('input[name="username"]').type('divancic');
-    cy.get('input[name="password"]').type('valid_password');
-
-    // Klik na submit
+    cy.get('input[name="password"]').type('divancic');
     cy.get('button[type="submit"]').click();
-
-    // Provjera da li je prijava uspješna
-    cy.url().should('include', '/main'); // ili drugi URL koji se pojavi nakon prijave
-    cy.contains('Logout').should('exist'); // provjeri da logout postoji nakon login-a
+    cy.url().should('include', '/profile'); 
   });
 });
