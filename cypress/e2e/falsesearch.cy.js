@@ -1,6 +1,7 @@
 describe('User False Search', () => {
   it('returns no results when searching for non-existing image', () => {
     cy.visit('http://demo.baasic.com/angular/starterkit-photo-gallery/main');
+
     cy.get('svg').first().trigger('mouseover');
     cy.contains('a.menu__title', 'Menu').click({ force: true });
     cy.get(':nth-child(2) > .nav__link').click();
@@ -16,5 +17,6 @@ describe('User False Search', () => {
       .clear()
       .type('rendomslika{enter}');
     cy.get('.thumbnail__img').should('have.length', 0); 
+    
   });
 });

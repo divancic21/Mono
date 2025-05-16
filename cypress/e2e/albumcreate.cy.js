@@ -1,4 +1,4 @@
-describe('User Upload', () => {
+describe('Create Album', () => {
   it('uploads an image after login', () => {
     cy.visit('http://demo.baasic.com/angular/starterkit-photo-gallery/main');
 
@@ -9,12 +9,14 @@ describe('User Upload', () => {
     cy.get('input[name="password"]').type('divancic');
     cy.get('button[type="submit"]').click();
     cy.url().should('include', '/profile');
-    cy.get('[data-index="0"] > .thumbnail > .thumbnail__img').click();
-    cy.get('.push > .btn').click();
-    cy.get('input[type="file"]#photoInput').attachFile('test-imagee.jpg');
-    cy.get('.type--center > .btn').click();
-    cy.get('.spc--top--med > .btn').click();
-    cy.get('.thumbnail__img[style*="testimagee.JPG"]', { timeout: 10000 }).should('exist');
+    cy.get('.pull > .btn').click();
+    cy.get('#albumName').type('Ovo je naziv');
+    cy.get('#albumDescription').type('Ovo je opis');
+    cy.get('[type="submit"]').click();
+    cy.get('.placeholder').click();
+    cy.get('input#photoInput').selectFile('cypress/fixtures/coverr-imagee.jpg', { force: true });
+    cy.get('.spc--top--med > .btn')
+    cy.get('[type="submit"]').click();
 
   });
 });

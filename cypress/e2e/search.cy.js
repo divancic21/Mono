@@ -1,6 +1,7 @@
 describe('User Search', () => {
   it('logs out after successful login', () => {
     cy.visit('http://demo.baasic.com/angular/starterkit-photo-gallery/main');
+
     cy.get('svg').first().trigger('mouseover');
     cy.contains('a.menu__title', 'Menu').click({ force: true });
     cy.get(':nth-child(2) > .nav__link').click();
@@ -15,5 +16,6 @@ describe('User Search', () => {
     .should('be.visible')
     .type('slika{enter}');
     cy.contains('slika').should('exist');
+    
   });
 });
